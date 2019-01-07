@@ -90,18 +90,12 @@ class Application(Frame):
             return self.x   
         def getPVC_FLAT(self):
             self.x = self.cablePVC.get()
-            return self.x              
+            return int(self.x)              
         def getCircuitState(self):
             self.x = self.getCircuit.get()          
-            
-            try:
-                return int(self.x)
-            except ValueError:
-                return ""
-            except TypeError:
-                return ""
-        #end
+            return int(self.x) 
 
+        
         #error messages 
         # if len(getCircuitState(self))==0:
         #     self.conduitResult.configure(text="Circuit has not been entered ", bg='orange' )       
@@ -110,8 +104,7 @@ class Application(Frame):
         # if len(getCircuitState(self))==0:
         #     if (getCable(self)=="-"):
         #         self.conduitResult.configure(text="Please enter some values", bg='red' )
-        
-        #end       
+              
 
         self.conduitTypeResult.configure(text="Conduit Type:  " + self.conduit.get(), font='Helvetica 9 bold')
 
@@ -122,12 +115,12 @@ class Application(Frame):
         
         self.circuitNo.configure(text="Number of Circuits:  "+ self.getCircuit.get(), font='Helvetica 9 bold')
 
+
         def circuitNo(self):
 
             if (getConduitType(self)=="Heavy duty rigid UPVC conduit"):
 
-
-                if(getCable(self)=="1.5" and getCircuitState(self) <= int("1")):
+                if(getCable(self)=="1.5" and getCircuitState(self)<= int("1")):
                     return "20 or 25"
                 
                 if(getCable(self)=="2.5" or getCable(self)=="4" or getCable(self)=="6" and getCircuitState(self) <= int("1")):
@@ -289,784 +282,502 @@ class Application(Frame):
                 if(getCable(self)=='25' and getCircuitState(self) <= int("16")):
                     return "150"
                 
-                if(getCable(self)=='1' and getCircuitState(self) <= int("1")):
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("1")):
                     return "20"
-                if(getCable(self)=='1' and getCircuitState(self) <= int("1.5")):
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("1")):
                     return "20"
-                if(getCable(self)=='1' and getCircuitState(self) <= int("2.5")):
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("1")):
                     return "20"
-                if(getCable(self)=='1' and getCircuitState(self) <= int("4")):
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("1")):
                     return "20"
-                if(getCable(self)=='0' and getCircuitState(self) <= int("6")):
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("0")):
                     return "20"
-                if(getCable(self)=='0' and getCircuitState(self) <= int("10")):
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("0")):
                     return "20"
-                if(getCable(self)=='0' and getCircuitState(self) <= int("16")):
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
                     return "20"
-
                 
-                
-                
-                
-                
-
-                
-                
-
-                
-
-
-
-
-
-
-
-
-
-                
-                
-                if(getCable(self)=="1.5" and getCircuitState(self) <= int("1")):
-                    return "20 or 25"
-                
-                if(getCable(self)=="1" and getCircuitState(self)<= int("9")):
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("2")):
+                    return "25"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("2")):
+                    return "25"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("1")):
+                    return "25"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("1")):
+                    return "25"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("1")):
+                    return "25"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("1")):
+                    return "25"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
                     return "25"
                 
-                if(getCable(self)=="1" and getCircuitState(self)<= int("16")):
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("5")):
                     return "32"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("5")):
+                    return "32"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("3")):
+                    return "32"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("2")):
+                    return "32"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("1")):
+                    return "32"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("1")):
+                    return "32"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
+                    return "32"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("8")):
+                    return "40"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("8")):
+                    return "40"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("5")):
+                    return "40"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("4")):
+                    return "40"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("3")):
+                    return "40"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("2")):
+                    return "40"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
+                    return "40"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("14")):
+                    return "50"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("13")):
+                    return "50"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("9")):
+                    return "50"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("6")):
+                    return "50"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("5")):
+                    return "50"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("4")):
+                    return "50"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("2")):
+                    return "50"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("23")):
+                    return "63"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("22")):
+                    return "63"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("15")):
+                    return "63"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("11")):
+                    return "63"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("9")):
+                    return "63"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("7")):
+                    return "63"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("4")):
+                    return "63"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("42")):
+                    return "80 (NZ)"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("40")):
+                    return "80 (NZ)"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("28")):
+                    return "80 (NZ)"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("20")):
+                    return "80 (NZ)"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("17")):
+                    return "80 (NZ)"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("12")):
+                    return "80 (NZ)"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("8")):
+                    return "80 (NZ)"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("48")):
+                    return "80 (AUS)"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("46")):
+                    return "80 (AUS)"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("32")):
+                    return "80 (AUS)"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("23")):
+                    return "80 (AUS)"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("19")):
+                    return "80 (AUS)"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("14")):
+                    return "80 (AUS)"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("9")):
+                    return "80 (AUS)"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("75")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("71")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("52")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("36")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("30")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("22")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("14")):
+                    return "100 (NZ)"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("81")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("77")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("54")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("38")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("32")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("24")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("15")):
+                    return "100 (AUS)"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) >= int("100")):
+                    return "125"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) >= int("100")):
+                    return "125"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("81")):
+                    return "125"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("58")):
+                    return "125"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("49")):
+                    return "125"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("36")):
+                    return "125"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("23")):
+                    return "125"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) >= int("100")):
+                    return "150"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) >= int("100")):
+                    return "150"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) >= int("100")):
+                    return "150"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("76")):
+                    return "150"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("64")):
+                    return "150"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("47")):
+                    return "150"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("31")):
+                    return "150"
+
             
-                if(getCable(self)=="1" and getCircuitState(self)<= int("26")):
-                    return "40"
+
                 
-                if(getCable(self)=="1" and getCircuitState(self)<= int("43")):
-                    return "50"
-                
-                if(getCable(self)=="1" and getCircuitState(self)<= int("71")):
-                    return "63"
-                
-                if(getCable(self)=="1" and getCircuitState(self) >= int("100")):
-                    return "80(NZ), 80(AUS), 100(NZ), 100(AUS), 125 or 150"
         
-                if ((getCable(self)=="25" or getCable(self)=="35" or getCable(self)=="50" )
-                    and getCircuitState(self)<= int("0")):
-                    return '20'
-                
-                if ((getCable(self)=="70" or getCable(self)=="95") and getCircuitState(self)<= int("0")):
-                    return "20 or 25"
-                if ((getCable(self)=="120" or getCable(self)=="150") and getCircuitState(self)<= int("0")):
-                    return "20, 25 or 32"
-                if ((getCable(self)=="185" or 
-                getCable(self)=="240" or getCable(self)=="300") and getCircuitState(self)<= int("0")):
-                    return "20, 25, 32 or 40" 
-                if ((getCable(self)=="400" or getCable(self)=="500") and getCircuitState(self)<= int("0")):
-                    return "20, 25, 32, 40 or 50"    
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("0")):
-                    return "20, 25, 32, 40, 50 or 63"
-
-                if ((getCable(self)=="25" or getCable(self)== "35")
-                    and getCircuitState(self)<= int("1")):
-                    return '25 or 32'
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("1")):
-                    return "25,	32 or 40"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("1")):
-                    return "25,	32,	40 or 50"
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("1")):
-                    return "32 or 40" 
-                if ((getCable(self)=="120" or getCable(self)=="150") and getCircuitState(self)<= int("1")):
-                    return "40 or 50"    
-                if ((getCable(self)=="185" or 
-                getCable(self)=="240") and getCircuitState(self)<= int("1")):
-                    return "50 or 63"
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("1")):
-                    return "50, 63 or 80(NZ)"
-                if ((getCable(self)=="400" or getCable(self)=="500") and getCircuitState(self)<= int("1")):
-                    return "63 or 80(NZ) or 80(AUS)"
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("1")):
-                    return "80(NZ), 80(AUS) or 100(NZ)"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int(int("2"))):
-                    return "40"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int(int("2"))):
-                    return "50"
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("2")):
-                    return "63"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("2")):
-                    return "150"
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("2")):
-                    return "80(NZ)"
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("2")):
-                    return "80(AUS)"
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("2")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("3")):
-                    return "40"
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("3")):
-                    return "50"
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("3")):
-                    return "63"
-                if ((getCable(self)=="185") and getCircuitState(self)<= int("3")):
-                    return "80(NZ)"
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("3")):
-                    return "80(AUS)"
-                if ((getCable(self)=="400" or getCable(self)=="500") and getCircuitState(self)<= int("3")):
-                    return "100(NZ) or 100(AUS)"
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("3")):
-                    return "125"
-
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("4")):
-                    return "50"
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("4")):
-                    return "63"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("4")):
-                    return "80(NZ)"
-                if ((getCable(self)=="185") and getCircuitState(self)<= int("4")):
-                    return "80(AUS)"
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("4")):
-                    return "100(NZ) or 100(AUS)"
-                if ((getCable(self)=="500") and getCircuitState(self)<= int("4")):
-                    return "125"
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("4")):
-                    return "150"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("5")):
-                    return "50"
-                
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("5")):
-                    return "80(NZ)"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("5")):
-                    return "80(AUS)"
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("5")):
-                    return "100(NZ) or 100(AUS)"
-                if ((getCable(self)=="400") and getCircuitState(self)<= int("5")):
-                    return "125"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("6")):
-                    return "63"
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("6")):
-                    return "80(NZ)"
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("6")):
-                    return "80(AUS)"
-                if ((getCable(self)=="185") and getCircuitState(self)<= int("6")):
-                    return "100(NZ) or 100(AUS)"
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("6")):
-                    return "125"
-                if ((getCable(self)=="500") and getCircuitState(self)<= int("6")):
-                    return "150"
-                #7
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("7")):
-                    return "63"
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("7")):
-                    return "80(AUS)"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("7")):
-                    return "100(NZ)"
-                if ((getCable(self)=="400") and getCircuitState(self)<= int("7")):
-                    return "150"
-                #8                       
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("8")):
-                    return "80(NZ)"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("8")):
-                    return "100(AUS)"
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("8")):
-                    return "125"
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("8")):
-                    return "150"
-                #9
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("9")):
-                    return "63"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("9")):
-                    return "80(AUS)"
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("9")):
-                    return "100(NZ)"
-
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("10")):
-                    return "80(NZ)"
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("10")):
-                    return "100(AUS)"
-                if ((getCable(self)=="185") and getCircuitState(self)<= int("10")):
-                    return "125"
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("10")):
-                    return "150"
-
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("11")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("12")):
-                    return "80(AUS)"
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("12")):
-                    return "100(AUS)"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("12")):
-                    return "125"
-
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("15")):
-                    return "80(AUS)"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("15")):
-                    return "100(NZ)"              
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("15")):
-                    return "125"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("16")):
-                    return "80(NZ)"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("16")):
-                    return "100(AUS)"
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("16")):
-                    return "150"
-                
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("18")):
-                    return "125"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("19")):
-                    return "80(AUS"
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("19")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("20")):
-                    return "150"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("21")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("24")):
-                    return "100(NZ)"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("24")):
-                    return "125"
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("24")):
-                    return "150"
-
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("26")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("29")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("31")):
-                    return "125"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("31")):
-                    return "150"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("39")):
-                    return "125"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("41")):
-                    return "150"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("48")):
-                    return "125"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("52")):
-                    return "150"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("62")):
-                    return "150"
-                #CableType AND HEAVY    
-                
-                #1
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("1")):
-                    return "20"
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("1")):
-                    return "20"
-                if ((getCable(self)=="10" or getCable(self)=="16") and getCircuitState(self)<= int("1")):
-                    return "20 or 25"
-                #3
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("3")):
-                    return "20"
-                if ((getCable(self)=="4" or getCable(self)=="6") and getCircuitState(self)<= int("3")):
-                    return "25"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("3")):
-                    return "32"
-
-                #4
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("4")):
-                    return "20"
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("4")):
-                    return "32"
-                #5
-
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("5")):
-                    return "25"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("5")):
-                    return "40"
-                #6
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("6")):
-                    return "32"
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("6")):
-                    return "40"
-                #7
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("7")):
-                    return "25"
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("7")):
-                    return "32"
-                #8
-
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("8")):
-                    return "50"
-
-
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("9")):
-                    return "40"
-                #10
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("10")):
-                    return "32"
-                #11
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("11")):
-                    return "40"
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("11")):
-                    return "50"
-                #13
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("13")):
-                    return "32"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("13")):
-                    return "63"
-                #16
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("16")):
-                    return "40"
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("16")):
-                    return "50"
-                #18
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("18")):
-                    return "63"
-                #19
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("19")):
-                    return "50"
-                #19
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("21")):
-                    return "40"
-                #24
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("24")):
-                    return "80(NZ)"
-                #24
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("26")):
-                    return "63"
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("27")):
-                    return "50"
-                
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("28")):
-                    return "82(AUS)"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("31")):
-                    return "63"
-
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("32")):
-                    return "80(NZ)"
-                
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("32")):
-                    return "80(NZ)"
-                
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("36")):
-                    return "50"
-                
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("36")):
-                    return "50"
-                
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("38")):
-                    return "80(AUS)"
-
-                
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("43")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("44")):
-                    return "63"
-                    
-                if ((getCable(self)=="16") and getCircuitState(self) <= int("46")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("48")):
-                    return "80(NZ)"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("55")):
-                    return "80(AUS)"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("56")):
-                    return "80(NZ)"
-                
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("58")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("59")):
-                    return "63"
-                
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("63")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("64")):
-                    return "80(AUS)"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("64")):
-                    return "80(AUS)"
-                
-                if ((getCable(self)=="16") and getCircuitState(self) <= int("70")):
-                    return "125"
-                
-                
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("79")):
-                    return "80(NZ)"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("85")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("92")):
-                    return "80(AUS)"
-
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("92")):
-                    return "100(AUS)"
-
-                if ((getCable(self)=="16") and getCircuitState(self) <= int("92")):
-                    return "150"
-                
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("95")):
-                    return "125"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("99")):
-                    return "100(NZ)"             
-
-                if ((getCable(self)=="1.5") and getCircuitState(self) >= int("100")):
-                    return "80(NZ), 80(AUS), 100(NZ), 100(AUS), 125 or 150"
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self) >= int("100")):
-                    return "100(NZ), 100(AUS), 125 or 150"                       
-
-                if ((getCable(self)=="4") and getCircuitState(self) >= int("100")):
-                    return "100(AUS), 125 or 150"
-    
-                if ((getCable(self)=="6") and getCircuitState(self) >= int("100")):
-                    return "125 or 150"
-                
-                if ((getCable(self)=="10") and getCircuitState(self) >= int("100")):
-                    return "150"
                     
             if (getConduitType(self)=="Corflo conduit"):
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("43")):
-                    return "100(NZ)"
+
+                if(getCable(self)=="1.5" and getCircuitState(self) <= int("38")):
+                    return "100 (NZ)"
+                if(getCable(self)=="2.5" and getCircuitState(self) <= int("30")):
+                    return "100 (NZ)"
+                if(getCable(self)=="4" and getCircuitState(self) <= int("23")):
+                    return "100 (NZ)"
+                if(getCable(self)=="6" and getCircuitState(self) <= int("21")):
+                    return "100 (NZ)"
                 
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("45")):
-                    return "100(AUS)"
+                if(getCable(self)=="1.5" and getCircuitState(self) <= int("40")):
+                    return "100 (AUS)"
+                if(getCable(self)=="2.5" and getCircuitState(self) <= int("31")):
+                    return "100 (AUS)"
+                if(getCable(self)=="4" and getCircuitState(self) <= int("24")):
+                    return "100 (AUS)"
+                if(getCable(self)=="6" and getCircuitState(self) <= int("22")):
+                    return "100 (AUS)"
                 
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("60")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("89")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("58")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("85")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)>= int("100")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="4") and getCircuitState(self)>= int("100")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("67")):
+                if(getCable(self)=="1.5" and getCircuitState(self) <= int("59")):
+                    return "125"
+                if(getCable(self)=="2.5" and getCircuitState(self) <= int("46")):
+                    return "125"
+                if(getCable(self)=="4" and getCircuitState(self) <= int("36")):
+                    return "125"
+                if(getCable(self)=="6" and getCircuitState(self) <= int("33")):
                     return "125"
                 
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("97")):
-                    return "125"
-                
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("88")):
+                if(getCable(self)=="1.5" and getCircuitState(self) <= int("78")):
+                    return "150"
+                if(getCable(self)=="2.5" and getCircuitState(self) <= int("61")):
+                    return "150"
+                if(getCable(self)=="4" and getCircuitState(self) <= int("48")):
+                    return "150"
+                if(getCable(self)=="6" and getCircuitState(self) <= int("43")):
                     return "150"
 
-                if (((getCable(self)=="1.5" or (getCable(self)=="2.5"))) and getCircuitState(self) >= int("100")):
-                    return "100(NZ), 100(AUS), 125 or 150"
-                    
-                if ((getCable(self)=="4") and getCircuitState(self) >= int("100")):
-                    return "100(AUS), 125 or 150"
-                    
-                if ((getCable(self)=="6") and getCircuitState(self) >= int("100")):
-                    return "125 or 150"
-                    
-                if ((getCable(self)=="10") and getCircuitState(self) >= int("100")):
-                    return "150"
-                
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("1")):
-                    return "100(NZ) or 100(AUS)"
-                
-                if ((getCable(self)=="400" or getCable(self)=='500') and getCircuitState(self)<= int("3")):
-                    return "100(NZ) or 100(AUS)"               
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("3")):
-                    return "125"
-                
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("4")):
-                    return "100(NZ) or 100(AUS)"               
-                if ((getCable(self)=="500") and getCircuitState(self)<= int("4")):
-                    return "125"
-                if ((getCable(self)=="630") and getCircuitState(self)<= int("4")):
-                    return "150"
-                
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("5")):
-                    return "100(NZ) or 100(AUS)"               
-                if ((getCable(self)=="400") and getCircuitState(self)<= int("5")):
-                    return "125"
-                
-                if ((getCable(self)=="185") and getCircuitState(self)<= int("6")):
-                    return "100(NZ) or 100(AUS)"               
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("6")):
-                    return "125"
-                if ((getCable(self)=="400" or getCable(self)=="500") and getCircuitState(self)<= int("6")):
-                    return "150"
-                
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("7")):
-                    return "100(NZ)"               
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("7")):
-                    return "125"
-                
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("8")):
-                    return "100(AUS)"  
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("8")):
-                    return "150"  
-                
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("11")):
-                    return "100(NZ)"
-                
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("10")):
-                    return "100(AUS)" 
-                if ((getCable(self)=="240") and getCircuitState(self)<= int("10")):
-                    return "125" 
-                if ((getCable(self)=="300") and getCircuitState(self)<= int("10")):
-                    return "150" 
-                
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("12")):
-                    return "100(AUS)" 
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("12")):
-                    return "125" 
-                
-                if ((getCable(self)=="185") and getCircuitState(self)<= int("13")):
-                    return "150" 
-                
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("14")):
-                    return "125" 
-                
-                if ((getCable(self)=="150") and getCircuitState(self)<= int("16")):
-                    return "150" 
-                
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("17")):
-                    return "125" 
-                
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("15")):
-                    return "100(NZ) or 100(AUS)" 
-                
-                if ((getCable(self)=="120") and getCircuitState(self)<= int("19")):
-                    return "150" 
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("19")):
-                    return "100(NZ)" 
-                
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("20")):
-                    return "125" 
+                if(getCable(self)=='10' and getCircuitState(self) <= int("13")):
+                    return "100 (NZ)"
+                if(getCable(self)=='16' and getCircuitState(self) <= int("11")):
+                    return "100 (NZ)"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("7")):
+                    return "100 (NZ)"
 
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("23")):
-                    return "125" 
-                if ((getCable(self)=="95") and getCircuitState(self)<= int("23")):
-                    return "150" 
+                if(getCable(self)=='10' and getCircuitState(self) <= int("14")):
+                    return "100 (AUS)"
+                if(getCable(self)=='16' and getCircuitState(self) <= int("11")):
+                    return "100 (AUS)"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("8")):
+                    return "100 (AUS)"
+                
+                if(getCable(self)=='10' and getCircuitState(self) <= int("21")):
+                    return "125"
+                if(getCable(self)=='16' and getCircuitState(self) <= int("17")):
+                    return "125"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("12")):
+                    return "125"
+                
+                if(getCable(self)=='10' and getCircuitState(self) <= int("28")):
+                    return "150"
+                if(getCable(self)=='16' and getCircuitState(self) <= int("22")):
+                    return "150"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("16")):
+                    return "150"
+                ##################################################### BREAK POINT
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("75")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("71")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("50")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("36")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("30")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("22")):
+                    return "100 (NZ)"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("17")):
+                    return "100 (NZ)"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("78")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("74")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("52")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("37")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("31")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("23")):
+                    return "100 (AUS)"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("15")):
+                    return "100 (AUS)"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) >= int("100")):
+                    return "125"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) >= int("100")):
+                    return "125"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("77")):
+                    return "125"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("55")):
+                    return "125"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("47")):
+                    return "125"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("34")):
+                    return "125"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("22")):
+                    return "125"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) >= int("100")):
+                    return "150"
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) >= int("100")):
+                    return "150"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) >= int("100")):
+                    return "150"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("73")):
+                    return "150"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("62")):
+                    return "150"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("45")):
+                    return "150"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("30")):
+                    return "150"
 
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("24")):
-                    return "100(NZ)" 
                 
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("29")):
-                    return "100(NZ)" 
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("30")):
-                    return "100(AUS)"
-                if ((getCable(self)=="70") and getCircuitState(self)<= int("30")):
-                    return "150"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("25")):
-                    return "100(AUS)"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("30")):
-                    return "125"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("38")):
-                    return "125"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("45")):
-                    return "125"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("45")):
-                    return "125"
-                
-                if ((getCable(self)=="50") and getCircuitState(self)<= int("40")):
-                    return "150"
-                
-                if ((getCable(self)=="25") and getCircuitState(self)<= int("60")):
-                    return "150"
-                
-                if ((getCable(self)=="35") and getCircuitState(self)<= int("50")):
-                    return "150"
         
             if (getConduitType(self)=="Medium duty corrugated"):
         
-                if ((getCable(self)=="4" or getCable(self)=="6" or getCable(self)=="10" or getCable(self)=="16") and getCircuitState(self)<= int("1")):
+                if(getCable(self)=='10' and getCircuitState(self) <= int("7")):
+                    return "80 (NZ)"
+                if(getCable(self)=='16' and getCircuitState(self) <= int("6")):
+                    return "80 (NZ)"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("4")):
+                    return "80 (NZ)"
+
+                if(getCable(self)=='10' and getCircuitState(self) <= int("7")):
+                    return "80 (NZ)"
+                if(getCable(self)=='16' and getCircuitState(self) <= int("6")):
+                    return "80 (NZ)"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("4")):
+                    return "80 (NZ)"
+
+                if(getCable(self)=='2.5' or getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("0")):
                     return "20"
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("2")):
+                if(getCable(self)=='1.5' and getCircuitState(self) <= int("1")):
                     return "20"
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("2")):
+                if(getCable(self)=='1.5' or getCable(self)=='2.5' or getCable(self)=='4' and getCircuitState(self) <= int("1")):
+                    return "20 or 32"
+                if(getCable(self)=='6' and getCircuitState(self) <= int("1")):
+                    return "32 or 40"
+                if(getCable(self)=='6' and getCircuitState(self) <= int("0")):
                     return "25"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("2")):
+                if(getCable(self)=='1.5' or getCable(self)=='2.5'and getCircuitState(self) <= int("3")):
+                    return "40"
+                if(getCable(self)=='4' and getCircuitState(self) <= int("2")):
+                    return "40"
+
+                if(getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("0")):
+                    return "20 or 25"
+                if(getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("0")):
                     return "32"
-                
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("3")):
+                if(getCable(self)=='25' and getCircuitState(self) <= int("4")):
+                    return "80 (NZ)"
+                if(getCable(self)=='20' and getCircuitState(self) <= int("1")):
+                    return "32"
+                if(getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("1")):
+                    return "32"
+        
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) >= int("1")):
                     return "20"
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("3")):
-                    return "25"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("3")):
-                    return "32"
-            
-                if ((getCable(self)=="1") and getCircuitState(self)<= int("4")):
+                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
                     return "20"
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("4")):
+                if(getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("1")):
                     return "25"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("4")):
-                    return "40"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("5")):
-                    return "32"
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("5")):
-                    return "40"
-                
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("6")):
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("2")):
                     return "25"
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("6")):
-                    return "32"
-                
-                if ((getCable(self)=="1") and getCircuitState(self)<= int("7")):
+                if(getPVC_FLAT(self)=='16'and getCircuitState(self) <= int("0")):
                     return "25"
                 
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("8")):
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("4")):
+                    return "32"
+                if(getPVC_FLAT(self)=='2.5'and getCircuitState(self) <= int("3")):
+                    return "32"
+                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
                     return "32"
                 
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("11")):
-                    return "32"
-                
-                if ((getCable(self)=="1") and getCircuitState(self)<= int("14")):
-                    return "32"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("8")):
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("7")):
                     return "40"
-                
-                if ((getCable(self)=="1") and getCircuitState(self)<= int("23")):
+                if(getPVC_FLAT(self)=='2.5'and getCircuitState(self) <= int("5")):
                     return "40"
-                
-                if ((getCable(self)=="1.5") and getCircuitState(self)<= int("19")):
+                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("3")):
                     return "40"
-                
-                if ((getCable(self)=="2.5") and getCircuitState(self)<= int("14")):
-                    return "40"
-                
-                if ((getCable(self)=="6") and getCircuitState(self)<= int("10")):
-                    return "40"
-                    
+                if(getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
+                    return "40"    
             if (getConduitType(self)=="Medium duty rigid UPVC conduit"):
-    
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("0")):
-                    return "16"
+                if(getCable(self)=='1.5' or getCable(self)=='2.5' or getCable(self)=='4' or getCable(self)=='4' and getCircuitState(self) <= int("0")):
+                    return "20"
 
-                if ((getCable(self)=="2.5" or getCable(self)=="4" or getCable(self)=="6" or getCable(self)=="10") and getCircuitState(self)<= int("1")):
-                    return "16"
-                if ((getCable(self)=="6" or getCable(self)=="10" or getCable(self)=="16") and getCircuitState(self)<= int("1")):
-                    return "20"
-                if ((getCable(self)=="16") and getCircuitState(self)<= int("1")):
-                    return "35"
+                if(getCable(self)=='1.5' or getCable(self)=='2.5' and getCircuitState(self) <= int("1")):
+                    return "20 or 25"
                 
-                if ((getCable(self)=="4") and getCircuitState(self)<= int("2")):
-                    return "20"
-                if ((getCable(self)=="10") and getCircuitState(self)<= int("2")):
-                    return "25"
+                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("1")):
+                    return "25 or 32"
                 
-                if ((getCable(self)=="1" or getCable(self)=="1.5") and getCircuitState(self)<= int("3")):
-                    return "16"
-                if ((getCable(self)=="2.5" ) and getCircuitState(self)<= int("3")):
-                    return "20"
-                if ((getCable(self)=="6" ) and getCircuitState(self)<= int("3")):
-                    return "25"
-                if ((getCable(self)=="16" ) and getCircuitState(self)<= int("3")):
-                    return "32"
-                
-                if ((getCable(self)=="1.5" ) and getCircuitState(self)<= int("5")):
+                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("0")):
                     return "20"
                 
-                if ((getCable(self)=="1" ) and getCircuitState(self)<= int("6")):
-                    return "20"
-                
-                if ((getCable(self)=="4" ) and getCircuitState(self)<= int("4")):
-                    return "25"
-                
-                if ((getCable(self)=="2.5" ) and getCircuitState(self)<= int("6")):
-                    return "25"
-                
-                if ((getCable(self)=="1.5" ) and getCircuitState(self)<= int("8")):
-                    return "25"
-                
-                if ((getCable(self)=="1" ) and getCircuitState(self)<= int("10")):
-                    return "25"
-                
-                if ((getCable(self)=="10" ) and getCircuitState(self)<= int("4")):
+                if(getCable(self)=='2.5' and getCircuitState(self) <= int("1")):
                     return "32"
                 
-                if ((getCable(self)=="6" ) and getCircuitState(self)<= int("6")):
+                if(getCable(self)=='1.5' and getCircuitState(self) <= int("2")):
                     return "32"
                 
-                if ((getCable(self)=="4" ) and getCircuitState(self)<= int("7")):
-                    return "32"
+                if(getCable(self)=='2.5' and getCircuitState(self) <= int("3")):
+                    return "40"
                 
-                if ((getCable(self)=="2.5" ) and getCircuitState(self)<= int("11")):
-                    return "32"
+                if(getCable(self)=='1.5' and getCircuitState(self) <= int("4")):
+                    return "40"
                 
-                if ((getCable(self)=="1.5" ) and getCircuitState(self)<= int("14")):
-                    return "32"
-                
-                if ((getCable(self)=="1" ) and getCircuitState(self)<= int("17")):
-                    return "32"
+                if(getCable(self)=='1.5' and getCircuitState(self) <= int("7")):
+                    return "50"
+                if(getCable(self)=='2.5' and getCircuitState(self) <= int("6")):
+                    return "50"
 
-                if ((getCable(self)=="16" ) and getCircuitState(self)<= int("5")):
+                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("2")):
                     return "40"
-                
-                if ((getCable(self)=="10" ) and getCircuitState(self)<= int("7")):
-                    return "40"
-                
-                if ((getCable(self)=="6" ) and getCircuitState(self)<= int("10")):
-                    return "40"
-                
-                if ((getCable(self)=="4" ) and getCircuitState(self)<= int("12")):
-                    return "40"
-                
-                if ((getCable(self)=="2.5" ) and getCircuitState(self)<= int("17")):
-                    return "40"
-                
-                if ((getCable(self)=="1.5" ) and getCircuitState(self)<= int("23")):
-                    return "40"
-                
-                if ((getCable(self)=="1" ) and getCircuitState(self)<= int("28")):
-                    return "40"
-                
-
-                if ((getCable(self)=="1" ) and getCircuitState(self)<= int("45")):
+                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("4")):
                     return "50"
                 
-                if ((getCable(self)=="1.5" ) and getCircuitState(self)<= int("38")):
+                if(getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("0")):
+                    return "16, 20 or 25"
+                if(getCable(self)=='25' and getCircuitState(self) <= int("0")):
+                    return "32"
+                
+                if(getCable(self)=='10' or getCable(self)=='16' and getCircuitState(self) <= int("1")):
+                    return "32 or 40"
+                
+                if(getCable(self)=='25' and getCircuitState(self) <= int("1")):
+                    return "40 or 50"
+                
+                if(getCable(self)=='16' and getCircuitState(self) <= int("1")):
                     return "50"
                 
-                if ((getCable(self)=="2.5" ) and getCircuitState(self)<= int("28")):
+                if(getCable(self)=='10' and getCircuitState(self) <= int("2")):
                     return "50"
                 
-                if ((getCable(self)=="4" ) and getCircuitState(self)<= int("20")):
-                    return "50"
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' or getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("1")):
+                    return "16 or 20"
                 
-                if ((getCable(self)=="6" ) and getCircuitState(self)<= int("17")):
-                    return "50"
+                if(getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("1")):
+                    return "20 or 25"
                 
-                if ((getCable(self)=="10" ) and getCircuitState(self)<= int("11")):
-                    return "50"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("0")):
+                    return "16"
                 
-                if ((getCable(self)=="16" ) and getCircuitState(self)<= int("8")):
+                if(getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
+                    return "20"
+                
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
+                    return "25"
+                
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("1")):
+                    return "25 or 32"
+                
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
+                    return "32 or 40"
+                
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("3")):
+                    return "25"
+                
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("5")):
+                    return "32"
+                
+                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("9")):
+                    return "40"
+                
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("3")):
+                    return "32"
+                
+                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("1")):
+                    return "32"
+                
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("6")):
+                    return "40"
+                
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("4")):
+                    return "40"
+                
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("3")):
+                    return "40"
+                
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("2")):
+                    return "40"
+                
+                if(getPVC_FLAT(self)=='1' and getCircuitState(self) <= int("15")):
                     return "50"
-                    
+                if(getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("14")):
+                    return "50"
+                if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("10")):
+                    return "50"
+                if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("7")):
+                    return "50"
+                if(getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("6")):
+                    return "50"
+                if(getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("4")):
+                    return "50"
+                if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("3")):
+                    return "50"
+            
             else:
                 return "Invalid input, please check again"
 
