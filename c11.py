@@ -2,7 +2,7 @@ from tkinter import *
 
 conduitType = ["Heavy duty rigid UPVC conduit", "Corflo conduit", 
 "Medium duty corrugated", "Medium duty rigid UPVC conduit"]
-CableType = ["-", "1.5", "2.5", "4" , "6" ,"10" ,"16", "25"]
+CableType = ["-", "1.5", "2.5", "4" , "6" ,"10" ,'16', '25']
 PVC_FLAT = ["-", '1', "1.5", "2.5", "4" , "6" ,"10" ,"16"]
 
 class Application(Frame):
@@ -71,7 +71,18 @@ class Application(Frame):
 
         self.close = Button(master, text="Close", bg="light grey", command=master.destroy)
         self.close.grid(row = 5,column=0) 
-   
+
+        def openImage():
+            control = Toplevel()
+            canvas = Canvas(control, width=1101, height=595)
+            canvas.pack(expand = YES, fill = BOTH)
+            png1 = PhotoImage(file='C:\\Users\\Aditya.Verma\\Documents\\GitHub\\Table-c11-max-2-core-cables-in-conduit\\Capture.PNG')
+            canvas.create_image(0, 0, image = png1, anchor = NW)
+            canvas.png1 = png1
+
+        self.openImage = Button(master, text="Open Table", bg="light grey", command=openImage)#image open button
+        self.openImage.grid(row=5, column = 1)
+        
         def reset():
              self.PVCResult.configure(text="" )
              self.conduitTypeResult.configure(text="-" )
@@ -97,9 +108,9 @@ class Application(Frame):
         def getCircuitState(self):
             self.x = self.getCircuit.get()          
             return int(self.x) 
-     
-        if (getCable(self)=="-"):
-            self.conduitResult.configure(text="Cable length has not been selected ", bg='orange' )      
+
+        if not self.getCircuit.get():
+            self.conduitResult.configure(text="No. of Circuits has not been selected ", bg='orange' )      
               
         self.conduitTypeResult.configure(text="Conduit Type:  " + self.conduit.get(), font='Helvetica 9 bold')      
         
@@ -689,6 +700,7 @@ class Application(Frame):
                 
                 if(getCable(self)=='1.5' and getCircuitState(self) <= int("7")):
                     return "50"
+
                 if(getCable(self)=='2.5' and getCircuitState(self) <= int("6")):
                     return "50"
 
@@ -782,18 +794,12 @@ class Application(Frame):
 
         
         self.conduitResult.configure(text="Number of Conduits: \n" + circuitNo(self), bg='green2')
-        
-    
-    
-    
-
-            
+        if (circuitNo(self)=="Invalid input, please check again"):
+            self.conduitResult.configure(bg='red')
+         
 master = Tk()
 master.title("Number of Conduits. Table C11")
 master.geometry("750x220")
 app = Application(master)
 
 master.mainloop()
-
-
-
