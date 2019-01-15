@@ -25,10 +25,10 @@ class Application(Frame):
         self.conduitOptions.config(width=28)
         self.conduitOptions.grid(row=0, column=1)
         
-        self.PVCLabel = Label (master, text = "Cable Type", height=2, width=20)#Label
+        self.PVCLabel = Label (master, text = "PVC V90 & V75", height=2, width=20)#Label
         self.PVCLabel.grid(row=1, column = 0)
         
-        self.PVC_flat = Label (master, text = "PVC FLAT Cable Type", height=2, width=20)#Label
+        self.PVC_flat = Label (master, text = "PVC V90 FLAT", height=2, width=20)#Label
         self.PVC_flat.grid(row=2, column = 0)
 
         self.cable = StringVar(master)
@@ -82,6 +82,13 @@ class Application(Frame):
 
         self.openImage = Button(master, text="Open Table", bg="light grey", command=openImage)#image open button
         self.openImage.grid(row=5, column = 1)
+
+        self.disclaimerText = Label (master, text = """DISCLAIMER\n Please refer to the Table (can be accessed by clicking Open Table button)
+         to confirm the results before practically applying the Number Of Conduits. Each output has not been tested thus 
+         caution should be taken when using this program.\n
+         REFERENCE: AS/NZ 3000:2018 Electrical Installations (known as the Australian/New Zeealand Wiring Rules"""
+        ,font='Helvetica 9 bold') #Label
+        self.disclaimerText.grid(row=6, rowspan=2, column=0, columnspan=3, sticky=W)    
         
         def reset():
              self.PVCResult.configure(text="" )
@@ -93,6 +100,11 @@ class Application(Frame):
         self.tableview = Button(master, text="Reset", bg="light grey", command=reset)
         self.tableview.grid(row = 4,column=0) 
 
+        def toogle_state(*_):
+            if self.getCircuit.get():
+                btn['state']='normal'    
+            else:
+                btn['state']='disabled'
     def onButtonClick(self):
         
         #get values
@@ -109,9 +121,8 @@ class Application(Frame):
             self.x = self.getCircuit.get()          
             return int(self.x) 
 
-        if not self.getCircuit.get():
+        if not self.getCircuit.get() or self.cable.get():
             self.conduitResult.configure(text="No. of Circuits has not been selected ", bg='orange' )      
-              
         self.conduitTypeResult.configure(text="Conduit Type:  " + self.conduit.get(), font='Helvetica 9 bold')      
         
         if (getCable(self)=="-"):
@@ -133,16 +144,16 @@ class Application(Frame):
                 if(getCable(self)=="1.5" and getCircuitState(self)<= int("1")):
                     return "20 or 25"
                 
-                if(getCable(self)=="2.5" or getCable(self)=="4" or getCable(self)=="6" and getCircuitState(self) <= int("1")):
+                if((getCable(self)=="2.5" or getCable(self)=="4" or getCable(self)=="6") and getCircuitState(self) <= int("1")):
                     return "25 or 32"
                 
-                if(getCable(self)=="2.5" or getCable(self)=="4" or getCable(self)=="6"  and getCircuitState(self) <= int("0")):
+                if((getCable(self)=="2.5" or getCable(self)=="4" or getCable(self)=="6")  and getCircuitState(self) <= int("0")):
                     return "20"
                 
                 if(getCable(self)=="1.5" and getCircuitState(self) <= int("2")):
                     return "32"
                 
-                if(getCable(self)=="4" or getCable(self)=="6" and getCircuitState(self) <= int("2")):
+                if((getCable(self)=="4" or getCable(self)=="6") and getCircuitState(self) <= int("2")):
                     return "40"
                 
                 if(getCable(self)=="2.5" and getCircuitState(self) <= int("3")):
@@ -151,7 +162,7 @@ class Application(Frame):
                 if(getCable(self)=="1.5" and getCircuitState(self) <= int("4")):
                     return "40"
                 
-                if(getCable(self)=="4" or getCable(self)=="6" and getCircuitState(self) <= int("4")):
+                if((getCable(self)=="4" or getCable(self)=="6") and getCircuitState(self) <= int("4")):
                     return "50"
                 
                 if(getCable(self)=="2.5" and getCircuitState(self) <= int("5")):
@@ -223,12 +234,10 @@ class Application(Frame):
                 if(getCable(self)=="6" and getCircuitState(self) <= int("45")):
                     return "150"
 
-                #PVC/PVC V75
-
-                if(getCable(self)=="10" or getCable(self)=="16" or getCable(self)=="25" and getCircuitState(self) <= int("0")):
+                if((getCable(self)=="10" or getCable(self)=="16" or getCable(self)=="25") and getCircuitState(self) == int("0")):
                     return "20 or 25"
                 
-                if(getCable(self)=="10" or getCable(self)=="16" and getCircuitState(self) <= int("1")):
+                if((getCable(self)=="10" or getCable(self)=="16") and getCircuitState(self) <= int("1")):
                     return "32 or 40"
                 
                 if(getCable(self)=='25' and getCircuitState(self) <= int("0")):
@@ -472,11 +481,7 @@ class Application(Frame):
                 if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("31")):
                     return "150"
 
-            
-
-                
         
-                    
             if (getConduitType(self)=="Corflo conduit"):
 
                 if(getCable(self)=="1.5" and getCircuitState(self) <= int("38")):
@@ -603,8 +608,6 @@ class Application(Frame):
                 if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("30")):
                     return "150"
 
-                
-        
             if (getConduitType(self)=="Medium duty corrugated"):
         
                 if(getCable(self)=='10' and getCircuitState(self) <= int("7")):
@@ -621,69 +624,70 @@ class Application(Frame):
                 if(getCable(self)=='25' and getCircuitState(self) <= int("4")):
                     return "80 (NZ)"
 
-                if(getCable(self)=='2.5' or getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("0")):
+                if((getCable(self)=='2.5' or getCable(self)=='4' or getCable(self)=='6') and getCircuitState(self) <= int("0")):
                     return "20"
                 if(getCable(self)=='1.5' and getCircuitState(self) <= int("1")):
                     return "20"
-                if(getCable(self)=='1.5' or getCable(self)=='2.5' or getCable(self)=='4' and getCircuitState(self) <= int("1")):
+                if((getCable(self)=='1.5' or getCable(self)=='2.5' or getCable(self)=='4') and getCircuitState(self) <= int("1")):
                     return "20 or 32"
                 if(getCable(self)=='6' and getCircuitState(self) <= int("1")):
                     return "32 or 40"
                 if(getCable(self)=='6' and getCircuitState(self) <= int("0")):
                     return "25"
-                if(getCable(self)=='1.5' or getCable(self)=='2.5'and getCircuitState(self) <= int("3")):
+                if((getCable(self)=='1.5' or getCable(self)=='2.5')and getCircuitState(self) <= int("3")):
                     return "40"
                 if(getCable(self)=='4' and getCircuitState(self) <= int("2")):
                     return "40"
 
-                if(getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("0")):
+                if((getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25') and getCircuitState(self) <= int("0")):
                     return "20 or 25"
-                if(getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("0")):
+                if((getCable(self)=='16' or getCable(self)=='25') and getCircuitState(self) <= int("0")):
                     return "32"
                 if(getCable(self)=='25' and getCircuitState(self) <= int("4")):
                     return "80 (NZ)"
                 if(getCable(self)=='20' and getCircuitState(self) <= int("1")):
                     return "32"
-                if(getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("1")):
+                if((getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25') and getCircuitState(self) <= int("1")):
                     return "32"
         
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) >= int("1")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) >= int("1")):
                     return "20"
-                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
+                if((getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16')
+                 and getCircuitState(self) <= int("0")):
                     return "20"
-                if(getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' and getCircuitState(self) <= int("1")):
+                if((getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10') and getCircuitState(self) <= int("1")):
                     return "25"
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("2")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) <= int("2")):
                     return "25"
                 if(getPVC_FLAT(self)=='16'and getCircuitState(self) <= int("0")):
                     return "25"
                 
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("4")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) <= int("4")):
                     return "32"
                 if(getPVC_FLAT(self)=='2.5'and getCircuitState(self) <= int("3")):
                     return "32"
-                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
+                if((getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' or getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16') and getCircuitState(self) <= int("1")):
                     return "32"
                 
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("7")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) <= int("7")):
                     return "40"
                 if(getPVC_FLAT(self)=='2.5'and getCircuitState(self) <= int("5")):
                     return "40"
                 if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("3")):
                     return "40"
-                if(getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
+                if((getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16') and getCircuitState(self) <= int("1")):
                     return "40"    
             if (getConduitType(self)=="Medium duty rigid UPVC conduit"):
-                if(getCable(self)=='1.5' or getCable(self)=='2.5' or getCable(self)=='4' or getCable(self)=='4' and getCircuitState(self) <= int("0")):
+                if((getCable(self)=='1.5' or getCable(self)=='2.5' or getCable(self)=='4' or getCable(self)=='4') and getCircuitState(self) <= int("0")):
                     return "20"
 
-                if(getCable(self)=='1.5' or getCable(self)=='2.5' and getCircuitState(self) <= int("1")):
+                if((getCable(self)=='1.5' or getCable(self)=='2.5') and getCircuitState(self) <= int("1")):
                     return "20 or 25"
                 
-                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("1")):
+                if((getCable(self)=='4' or getCable(self)=='6') and getCircuitState(self) <= int("1")):
                     return "25 or 32"
                 
-                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("0")):
+                if((getCable(self)=='4' or getCable(self)=='6') and getCircuitState(self) <= int("0")):
                     return "20"
                 
                 if(getCable(self)=='2.5' and getCircuitState(self) <= int("1")):
@@ -704,17 +708,17 @@ class Application(Frame):
                 if(getCable(self)=='2.5' and getCircuitState(self) <= int("6")):
                     return "50"
 
-                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("2")):
+                if((getCable(self)=='4' or getCable(self)=='6') and getCircuitState(self) <= int("2")):
                     return "40"
-                if(getCable(self)=='4' or getCable(self)=='6' and getCircuitState(self) <= int("4")):
+                if((getCable(self)=='4' or getCable(self)=='6') and getCircuitState(self) <= int("4")):
                     return "50"
                 
-                if(getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25' and getCircuitState(self) <= int("0")):
+                if((getCable(self)=='10' or getCable(self)=='16' or getCable(self)=='25') and getCircuitState(self) <= int("0")):
                     return "16, 20 or 25"
                 if(getCable(self)=='25' and getCircuitState(self) <= int("0")):
                     return "32"
                 
-                if(getCable(self)=='10' or getCable(self)=='16' and getCircuitState(self) <= int("1")):
+                if((getCable(self)=='10' or getCable(self)=='16') and getCircuitState(self) <= int("1")):
                     return "32 or 40"
                 
                 if(getCable(self)=='25' and getCircuitState(self) <= int("1")):
@@ -726,16 +730,16 @@ class Application(Frame):
                 if(getCable(self)=='10' and getCircuitState(self) <= int("2")):
                     return "50"
                 
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' or getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("1")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' or getPVC_FLAT(self)=='2.5') and getCircuitState(self) <= int("1")):
                     return "16 or 20"
                 
-                if(getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("1")):
+                if((getPVC_FLAT(self)=='2.5' or getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6') and getCircuitState(self) <= int("1")):
                     return "20 or 25"
                 
                 if(getPVC_FLAT(self)=='4' and getCircuitState(self) <= int("0")):
                     return "16"
                 
-                if(getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
+                if((getPVC_FLAT(self)=='10' or getPVC_FLAT(self)=='16') and getCircuitState(self) <= int("0")):
                     return "20"
                 
                 if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("0")):
@@ -747,19 +751,19 @@ class Application(Frame):
                 if(getPVC_FLAT(self)=='16' and getCircuitState(self) <= int("1")):
                     return "32 or 40"
                 
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("3")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) <= int("3")):
                     return "25"
                 
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("5")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) <= int("5")):
                     return "32"
                 
-                if(getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5' and getCircuitState(self) <= int("9")):
+                if((getPVC_FLAT(self)=='1' or getPVC_FLAT(self)=='1.5') and getCircuitState(self) <= int("9")):
                     return "40"
                 
                 if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("3")):
                     return "32"
                 
-                if(getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6' and getCircuitState(self) <= int("1")):
+                if((getPVC_FLAT(self)=='4' or getPVC_FLAT(self)=='6') and getCircuitState(self) <= int("1")):
                     return "32"
                 
                 if(getPVC_FLAT(self)=='2.5' and getCircuitState(self) <= int("6")):
@@ -799,7 +803,7 @@ class Application(Frame):
          
 master = Tk()
 master.title("Number of Conduits. Table C11")
-master.geometry("750x220")
+master.geometry("700x325")
 app = Application(master)
 
 master.mainloop()
