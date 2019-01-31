@@ -80,7 +80,13 @@ class Application(Frame):
             canvas.create_image(0, 0, image = png1, anchor = NW)
             canvas.png1 = png1
 
-        self.openImage = Button(master, text="Open Table", bg="light grey", command=openImage)#image open button
+        self.canvas = Canvas(master, width=99, height=30)
+        self.canvas.grid(row=5, column=2)
+        self.logo = PhotoImage(file='C:\\Users\\Aditya.Verma\\Documents\\GitHub\\Table-c10---max-single-core-sheathed-cables\\Lucid Logo.PNG')
+        self.canvas.create_image(0, 0, image = self.logo, anchor = NW)
+        self.canvas.logo = self.logo   
+
+        self.openImage = Button(master, text="Open Table", bg="light grey", command=openImage) #image open button
         self.openImage.grid(row=5, column = 1)
 
         self.disclaimerText = Label (master, text = """DISCLAIMER\n Please refer to the Table (can be accessed by clicking Open Table button)
@@ -137,6 +143,13 @@ class Application(Frame):
         
         self.circuitNo.configure(text="Number of Circuits:  "+ self.getCircuit.get(), font='Helvetica 9 bold')
 
+        # file = open("Data.txt","a+")
+        # file.write(str(getCable(self)))
+        # file.write("test")
+        # file.write(str(getPVC_FLAT(self)))
+        # file.write(str(getCircuitState(self)))
+        # # file.write(str(circuitNo(self)))
+        # file.close()
         def circuitNo(self):
 
             if (getConduitType(self)=="Heavy duty rigid UPVC conduit"):
@@ -797,6 +810,7 @@ class Application(Frame):
                 return "Invalid input, please check again"
 
         
+
         self.conduitResult.configure(text="Number of Conduits: \n" + circuitNo(self), bg='green2')
         if (circuitNo(self)=="Invalid input, please check again"):
             self.conduitResult.configure(bg='red')
